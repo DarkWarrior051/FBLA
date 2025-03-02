@@ -137,40 +137,17 @@
         </div>  
         <div class="section contact-form">
             <h2>Contact Us for Arena Rental</h2>
-            <form id="rentalForm">
-                <label for="name">Full Name:</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Email Address:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="eventDetails">Event Details:</label>
-                <textarea id="eventDetails" name="eventDetails" rows="4" required></textarea>
-                <button type="submit">Submit</button>
-            </form>
+            <form id="rentalForm" action="save_rental.php" method="post">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <textarea name="eventDetails" placeholder="Describe Your Event" required></textarea>
+            <button type="submit">Submit Rental Request</button>
+        </form>
         </div>
     </div>
 
     <footer>
         <p>&copy; 2025 Arena Promotions. All Rights Reserved.</p>
     </footer>
-
-    <script>
-        document.getElementById("rentalForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-            const eventDetails = document.getElementById("eventDetails").value;
-            const csvData = `${name},${email},${eventDetails}\n`;
-            
-            const blob = new Blob([csvData], { type: 'text/csv' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'FBLAPLANNER.csv';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            alert("Your rental request has been recorded!");
-        });
-    </script>
 </body>
 </html>
