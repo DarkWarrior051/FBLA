@@ -61,67 +61,61 @@
 </head>
 <body>
 
-    <div class="container">
-        <h1>FBLA Planner Rental Form</h1>
-        
-        <form id="rentalForm">
-            <label for="name">Full Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="eventDetails">Event Details:</label>
-            <textarea id="eventDetails" name="eventDetails" required></textarea>
-
-            <button type="submit">Submit Rental Request</button>
-        </form>
-
-        <p class="success-message" id="successMessage">Your rental request has been recorded!</p>
+            <div class="section">
+            <h2>Arena Rental Information</h2>
+            <p>Planning an event? Rent a space for your next event with us! We provide a range of arena sizes to suit your needs. Whether you're organizing a walk, run, or gathering, we offer flexible rental options.</p>
+            <h3>Arena Features:</h3>
+            <ul>
+                <li>Seating for up to 3,500 people</li>
+                <li>Audio/Visual equipment available</li>
+                <li>Catering space and food preparation areas</li>
+                <li>Parking for up to 100 vehicles</li>
+                <li>Accessibility options available</li>
+            </ul>
+            <h3>Pricing:</h3>
+            <ul>
+                <li>Small Arena (up to 100 people) - $500/day</li>
+                <li>Medium Arena (up to 250 people) - $1000/day</li>
+                <li>Large Arena (up to 500 people) - $1500/day</li>
+            </ul>
+                <p>For booking inquiries, please fill out the contact form below or call us at  (631) 912-2100.</p>
+        </div>  
+        <div class="section contact-form">
+            <h2>Contact Us for Arena Rental</h2>
+            <form id="rentalForm">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="eventDetails">Event Details:</label>
+                <textarea id="eventDetails" name="eventDetails" rows="4" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </div>
 
-    <!-- Firebase Integration -->
-    <script type="module">
-        // Import Firebase SDK
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
-        import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js";
+    <footer>
+        <p>&copy; 2025 Arena Promotions. All Rights Reserved.</p>
+    </footer>
 
-        // Your Firebase Config (Replace with your actual Firebase credentials)
-        const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_AUTH_DOMAIN",
-            databaseURL: "YOUR_DATABASE_URL",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_STORAGE_BUCKET",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-
-        // Form Submission Handling
+    <script>
         document.getElementById("rentalForm").addEventListener("submit", function(event) {
             event.preventDefault();
             const name = document.getElementById("name").value;
             const email = document.getElementById("email").value;
             const eventDetails = document.getElementById("eventDetails").value;
-
-            // Save data to Firebase
-            push(ref(db, "FBLAPLANNER"), {
-                name: name,
-                email: email,
-                eventDetails: eventDetails
-            });
-
-            // Display success message
-            document.getElementById("successMessage").style.display = "block";
-
-            // Reset form fields
-            document.getElementById("rentalForm").reset();
+            const csvData = `${name},${email},${eventDetails}\n`;
+            
+            const blob = new Blob([csvData], { type: 'text/csv' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'FBLAPLANNER.csv';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            alert("Your rental request has been recorded!");
         });
     </script>
-
 </body>
 </html>
