@@ -4,162 +4,76 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arena Information</title>
+    <title>Employer Job Posting</title>
     <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Courgette', cursive;
             margin: 0;
             padding: 0;
-            background: url('Image1.jpg'); 
-            background-size: cover, contain;
-            background-position: center, bottom;
-            background-repeat: no-repeat, no-repeat;
+            background: url('Image2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             background-attachment: fixed;
         }
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 800px;
+            margin: 50px auto;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 1.0);
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.0);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 20px 0;
+        h1 {
             text-align: center;
-        }
-        .header h1 {
-            margin: 0;
-        }
-        .bar {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
-        }
-        .circle {
-            background-color: #ffffff;
             color: #4CAF50;
-            border: 2px solid #4CAF50;
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
+        }
+        form {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex-direction: column;
         }
-        .circle:hover {
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        input, textarea {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px;
             background-color: #4CAF50;
-            color: #ffffff;
-            transition: 0.3s;
-        }
-        .circle a {
-            text-decoration: none;
-            color: inherit;
-        }
-        .circle h3 {
-            margin: 0;
-            font-size: 16px;
-        }
-        .section {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-            background-color: #333;
             color: white;
-            padding: 20px 0;
-            text-align: center;
-            width: 100%;
-            margin-top: auto;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Arena Information</h1>
-        </div>
+        <h1>Submit a Job Posting</h1>
+        <form action="submit_posting.php" method="post">
+            <label for="company_name">Company Name:</label>
+            <input type="text" id="company_name" name="company_name" required>
 
-        <div class="bar">
-            <div class="circle">
-                <a href="index.html">
-                    <h3>Home</h3>
-                </a>
-            </div>
-            <div class="circle">
-                <a href="calendarFBLA.html">
-                    <h3>Calendar</h3>
-                </a>
-            </div>
-            <div class="circle">
-                <a href="boxofficeFBLA.html">
-                    <h3>Box Office</h3>
-                </a>
-            </div>
-            <div class="circle">
-                <a href="infoFBLA.html">
-                    <h3>Information</h3>
-                </a>
-            </div>
-            <div class="circle">
-                <a href="plannerFBLA.html">
-                    <h3>Planner</h3>
-                </a>
-            </div>
-        </div>
+            <label for="job_title">Job Title:</label>
+            <input type="text" id="job_title" name="job_title" required>
 
-        <div class="section">
-            <h2>Event Information</h2>
+            <label for="job_description">Job Description:</label>
+            <textarea id="job_description" name="job_description" rows="5" required></textarea>
 
-            <h3>Directions</h3>
-            <p>The arena is located at Commack High School.</p>
-            <ul>
-                <li>From NYC: Travel approximately 54.1 miles via I-495 E. Take Exit 52 for Commack Rd, follow signs to Commack High School.</li>
-            </ul>
+            <label for="contact_email">Contact Email:</label>
+            <input type="email" id="contact_email" name="contact_email" required>
 
-            <h3>Seating Chart</h3>
-            <p>Our arena offers a variety of seating options:</p>
-            <ul>
-                <li>General Admission: Open seating in designated areas.</li>
-                <li>VIP Seating: Premium seats with the best views and exclusive access.</li>
-                <li>Accessibility: Wheelchair-accessible seating and facilities available.</li>
-            </ul>
-
-            <h3>Policies</h3>
-            <ul>
-                <li>No outside food or beverages allowed.</li>
-                <li>All attendees must present a valid ticket for entry.</li>
-                <li>Smoking and vaping are prohibited inside the arena.</li>
-                <li>Bag checks are conducted at all entrances for security purposes.</li>
-            </ul>
-
-            <h3>Amenities</h3>
-            <ul>
-                <li>Complimentary Wi-Fi throughout the arena.</li>
-                <li>Concession stands with a variety of food and drink options.</li>
-                <li>Restrooms available on all levels.</li>
-                <li>First aid stations for medical assistance.</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Contact Us</h2>
-            <p>Email: info@arenapromotions.com</p>
-            <p>Phone:  (631) 912-2100</p>
-            <p>Address: 1 Scholar Ln, Commack, NY 11725</p>
-        </div>
+            <button type="submit">Submit</button>
+        </form>
     </div>
-
-    <footer>
-        <p>&copy; 2025 Arena Promotions. All Rights Reserved.</p>
-    </footer>
 </body>
 </html>
