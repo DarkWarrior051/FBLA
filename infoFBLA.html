@@ -2,78 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employer Job Posting</title>
-    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+    <title>Admin Panel - Approve/Delete Postings</title>
     <style>
         body {
-            font-family: 'Courgette', cursive;
-            margin: 0;
-            padding: 0;
-            background: url('Image2.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
         }
         .container {
-            max-width: 800px;
-            margin: 50px auto;
+            width: 50%;
+            margin: 20px auto;
+            background: white;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        h1 {
-            text-align: center;
-            color: #4CAF50;
-        }
-        form {
+        .posting {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
             display: flex;
-            flex-direction: column;
-        }
-        label {
-            font-weight: bold;
-            margin-top: 10px;
-        }
-        input, textarea {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            justify-content: space-between;
+            align-items: center;
         }
         button {
-            margin-top: 15px;
             padding: 10px;
-            background-color: #4CAF50;
-            color: white;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
+            border-radius: 5px;
         }
-        button:hover {
-            background-color: #45a049;
-        }
+        .approve { background-color: #4CAF50; color: white; }
+        .delete { background-color: #d9534f; color: white; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Submit a Job Posting</h1>
-        <form action="submit_posting.php" method="post">
-            <label for="company_name">Company Name:</label>
-            <input type="text" id="company_name" name="company_name" required>
-
-            <label for="job_title">Job Title:</label>
-            <input type="text" id="job_title" name="job_title" required>
-
-            <label for="job_description">Job Description:</label>
-            <textarea id="job_description" name="job_description" rows="5" required></textarea>
-
-            <label for="contact_email">Contact Email:</label>
-            <input type="email" id="contact_email" name="contact_email" required>
-
-            <button type="submit">Submit</button>
-        </form>
+        <h2>Admin Panel</h2>
+        <div id="postings">
+            <!-- Job postings will be inserted here dynamically -->
+        </div>
     </div>
+
+    <script>
+        let postings = [
+            { id: 1, title: "Software Engineer Intern", company: "TechCorp" },
+            { id: 2, title: "Marketing Assistant", company: "AdSolutions" }
+        ];
+
+        function renderPostings() {
+            const postingsContainer = document.getElementById("postings");
+            postingsContainer.innerHTML = "";
+            postings.forEach(posting => {
+                const div = document.createElement("div");
+                div.className = "posting";
+                div.innerHTML = `
+                    <span><strong>${posting.title}</strong> at ${posting.company}</span>
+                    <button class="approve" onclick="approvePosting(${posting.id})">Approve</button>
+                    <button class="delete" onclick="deletePosting(${posting.id})">Delete</button>
+                `;
+                postingsContainer.appendChild(div);
+            });
+        }
+
+        function approvePosting(id) {
+            alert("Posting ID " + id + " approved.");
+            // Backend logic to update status in database
+        }
+
+        function deletePosting(id) {
+            postings = postings.filter(posting => posting.id !== id);
+            renderPostings();
+            alert("Posting ID " + id + " deleted.");
+            // Backend logic to remove from database
+        }
+
+        renderPostings();
+    </script>
 </body>
 </html>
