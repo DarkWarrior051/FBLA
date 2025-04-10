@@ -1,0 +1,111 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Courgette', cursive;
+}
+
+body {
+    background: linear-gradient(to right bottom, #76c7c0, #5ba4cf) fixed;
+    height: 100vh;
+}
+
+.container {
+    position: absolute;
+    width: 80vw;
+    height: 110vh;
+    display: flex;
+    left: 10%;
+    top: 10%;
+    bottom: 10%;
+    margin-bottom: 10%;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.9), rgba(240, 250, 255, 0.8));
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1),
+    0px 0px 50px rgba(0, 0, 0, 0.1);
+    border-radius: 3rem;
+    backdrop-filter: blur(1.5rem);
+}
+
+main {
+    display: flex;
+}
+
+h1 {
+    font-size: 3rem;
+    text-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2),
+    0px 0px 20px rgba(0, 0, 0, 0.1);
+    color: #016a72;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #007b83;
+}
+
+h3 {
+    font-size: 1rem;
+    color: #045d66;
+}
+
+.intro {
+    font-size: 18px;
+    color: #555555;
+    margin-top: -100px;
+    margin-left: 12rem;
+}
+
+.circle {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background: linear-gradient(to right, #56c7b8, #5ba4cf);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2),
+    0px 0px 50px rgba(0, 0, 0, 0.1);  
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-inline: .5rem;
+    text-align: center;
+}
+
+.card {
+    position: absolute;
+    z-index: 10;
+    left: 5%;
+    top: 5%;
+}
+
+.bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mainText {
+    font-size: 18px;
+    color: #004d56;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1),
+    0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+a {
+    text-decoration: none;
+    color: #006c76;
+}
+
+p, li {
+    font-size: 14px;
+    color: #333333;
+    margin-top: 10px;
+    margin-right: 18px;
+}
+
+img {
+    margin-top: 1.5rem;
+    margin-right: 3rem;
+    border-radius: 1rem;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1),
+    0px 0px 20px rgba(0, 0, 0, 0.1);
+}
